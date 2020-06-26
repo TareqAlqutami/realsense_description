@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="realsense_d435">
+    <pose>0 0 0.0149 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>0.072</mass>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.025 0.089 0.025</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://realsense_d435/meshes/realsense_d435.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <sensor name="realsense_camera" type="depth">
+        <always_on>1</always_on>
+        <visualize>true</visualize>
+        <update_rate>6</update_rate>
+        <camera>
+          <horizontal_fov>1.5917</horizontal_fov>
+          <image>
+            <width>424</width>
+            <height>240</height>
+            <format>R8G8B8</format>
+          </image>
+          <depth_camera></depth_camera>
+          <clip>
+            <near>0.1</near>
+            <far>10.0</far>
+          </clip>
+        </camera>
+
+        <plugin name="gazebo_ros_realsense_controller" filename="libgazebo_ros_openni_kinect.so">
+          <alwaysOn>true</alwaysOn>
+          <!-- Keep this zero, update_rate in the parent <sensor> tag will control the frame rate. -->
+          <updateRate>0.0</updateRate>
+          <cameraName>realsense_d435</cameraName>
+          <frameName>realsense_d435_frame</frameName>
+          <imageTopicName>/realsense_d435/rgb/image_raw</imageTopicName>
+          <depthImageTopicName>/realsense_d435/depth/image_raw</depthImageTopicName>
+          <pointCloudTopicName>/realsense_d435/depth/color/points</pointCloudTopicName>
+          <cameraInfoTopicName>/realsense_d435/rgb/camera_info</cameraInfoTopicName>
+          <depthImageCameraInfoTopicName>/realsense_d435/depth/camera_info</depthImageCameraInfoTopicName>
+          <pointCloudCutoff>0.0</pointCloudCutoff>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+          <CxPrime>0.0</CxPrime>
+          <!-- <Cx>315.6965637207031</Cx> <Cy>244.69960021972656</Cy> <focalLength>462.137950</focalLength> -->
+          <Cx>0.0</Cx>
+          <Cy>0.0</Cy>
+          <focalLength>0.0</focalLength>
+        </plugin>
+
+      </sensor>
+    </link>
+  </model>
+</sdf>

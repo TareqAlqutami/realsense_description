@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>realsense_description</name>
+  <version>0.0.1</version>
+  <description>The Intel realsense model description package</description>
+
+  <maintainer email="tareqaziz2010@gmail.com">Tareq ALQutami</maintainer>
+
+  <license>BSD</license>
+
+<author email="tareqaziz2010@gmail.com">Tareq ALQutami</author>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+
+  </export>
+</package>
